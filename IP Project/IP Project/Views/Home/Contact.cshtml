@@ -1,0 +1,68 @@
+﻿@{ViewBag.Title = "Contact";}
+
+
+<main aria-labelledby="title">
+    <h1 class="display-5 m-5">Please get in touch with us.</h1>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            @ViewBag.Message
+        </div>
+    }
+
+    <form @Url.Action("Contact", "Home") " method="post" class="row g-3 ms-5">
+        <div class="col-md-6">
+            <label for="inputFirstName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="inputFirstName" name="inputFirstName">
+        </div>
+        <div class="col-md-6">
+            <label for="inputLastName" class="form-label">Surname</label>
+            <input type="text" class="form-control" id="inputLastName" name="inputLastName">
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" name="inputEmail">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPhone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="inputPhone" name="inputPhone">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" name="inputAddress">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" name="inputAddress2">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity" name="inputCity">
+        </div>
+        <div class="col-md-6">
+            <label for="inputDealer" class="form-label">Dealer</label>
+            <select id="inputDealer" class="form-select">
+                <option selected>Abo Ghaly Motors</option>
+                <option>Ezz El Arab Stars</option>
+                <option>German Auto Service</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label for="floatingTextarea2">Your Inquiry</label>
+            <textarea class="form-control mt-3" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+
+        </div>
+        <div class="col-12">
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <label class="form-check-label" for="gridCheck">
+                    I agree for my details to be stored for the purpose of contacting me at a later date.
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-secondary btn-lg float-end">Submit</button>
+        </div>
+    </form>
+</main>

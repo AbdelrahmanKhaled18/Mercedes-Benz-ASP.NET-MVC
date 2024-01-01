@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "C Class";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card">
+        <img src="~/Images/Cclass.jpeg">
+        <div class="banner-text">
+            <h4>C-Class Saloon</h4>
+            <p>Welcome to the comfort zone.</p>
+        </div>
+    </div>
+
+    <div class="interior-c">
+        <h2>The interior of the Mercedes-Benz C-Class Saloon.</h2>
+        <p>The design idiom of the Mercedes-Benz C-Class Saloon was systematically thought through down to the last detail. Find out for yourself.</p>
+        <img src="~/Images/interiorC.jpeg">
+    </div>
+
+    <div class="c-cards">
+        <h2>C-Class Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>

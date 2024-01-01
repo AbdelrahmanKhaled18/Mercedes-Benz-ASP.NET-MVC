@@ -1,0 +1,181 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "GT Coupe";}
+
+<html>
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card-gt">
+        <img src="~/Images/gtmain.jpg">
+        <div class="banner-text-gt">
+            <h4>The Mercedes-AMG GT 4-door Coupé </h4>
+            <p>
+                The perfect outfit for every taste
+                Enjoy the experience of driving in new dimensions keeping with the AMG design philosophy:<br> sensual purity, striking proportions and an athletic shape.
+            </p>
+        </div>
+    </div>
+
+    <div class="interior-gt">
+        <h2>Noble racing car flair - also in the interior.</h2>
+        <p>The Mercedes-AMG GT 4-door model offers more space and more utility value. Perfect motorsport feeling with the comfort of a genuine saloon. Individual equipment packages round off the interior. The cockpit impresses with extremely high-quality materials and excellent quality of finish. The exclusive AMG fragrance delivers additional performance for your senses.</p>
+        <img src="~/Images/gtint.jpeg">
+    </div>
+
+    <div class="gt-cards">
+        <h2>GT Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+    <div class="col">
+        <div class="card h-100">
+            <img src="~/Images/gt43.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">GT-43</h5>
+                <h6 class="gt-card-specs">
+                    Horse Power:585 hp  <br>
+                    Engine Capacity: 3982 cm<sup>3</sup> <br>
+                    Acceleration: 4.9s
+                </h6>
+                <button type="button" id="btn-read" class="button-models" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Buy now
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h2>Purchase Confirmation</h2>
+                                <p class="gt-card-confirmation">
+                                    Check your email for all details to complete your purchase.<br>
+                                    Thank you for choosing Mercedes Benz!
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100">
+            <img src="~/Images/gt53.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">GT-53</h5>
+                <h6 class="gt-card-specs">
+                    Horse Power: 435 hp <br>
+                    Engine Capacity: 2999 cm<sup>3</sup> <br>
+                    Acceleration: 4.5s
+                </h6>
+                <button type="button" id="btn-read" class="button-models" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin-left: 50px;">
+                    Buy now
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h2>Purchase Confirmation</h2>
+                                <p class="gt-card-confirmation">
+                                    Check your email for all details to complete your purchase.<br>
+                                    Thank you for choosing Mercedes Benz!
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100">
+            <img src="~/Images/gt63.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">GT-63</h5>
+                <h6 class="gt-card-specs">
+                    Horse Power:306 hp <br>
+                    Engine Capacity: 1991 cm<sup>3</sup> <br>
+                    Acceleration:  2.8s
+                </h6>
+                <button type="button" id="btn-read" class="button-models-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="margin-left: 50px;">
+                    Buy now
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h2>Purchase Confirmation</h2>
+                                <p class="gt-card-confirmation">
+                                    Check your email for all details to complete your purchase.<br>
+                                    Thank you for choosing Mercedes Benz!
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+<div class="cont-wrapper">
+
+    <div class="container-class-models">
+        <i class="fa-solid fa-download"></i>
+        <div class="text-class-models">
+            <a href="https://www.mercedes-benz.com.eg/en/passengercars/buy/brochure-downloads.html" target="_blank">Download Brochures</a>
+        </div>
+    </div>
+
+    <div class="container-class-models">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <div class="text-class-models">
+            <a href="https://www.mercedes-benz.com.eg/en/passengercars/mercedes-benz-cars/dealer-locator.html" target="_blank">Find nearest dealerships</a>
+        </div>
+    </div>
+
+    <div class="container-class-models">
+        <i class="fa-solid fa-file-signature"></i>
+        <div class="text-class-models">
+            <a href="https://www.mercedes-benz.com.eg/en/passengercars/services/service-contracts.html">Service Contracts</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+

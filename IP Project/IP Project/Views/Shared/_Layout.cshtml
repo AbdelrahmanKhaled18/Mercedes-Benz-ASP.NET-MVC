@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://kit.fontawesome.com/32bd5643ee.js" crossorigin="anonymous"></script>
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-black">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-4 mt-1 text-light" href="#">
+                <img src="~/Images/benz.png" class="d-inline-block align-top">
+                Mercedes Benz
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto text-center my-lg-0 navbar-nav-scroll fs-4 text-secondary-emphasis justify-content-center" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active text-light fw-bold" aria-current="page" href="@Url.Action("Index","Home")">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Models
+                        </a>
+                        <ul class="dropdown-menu bg-black">
+
+                            <li class="nav-item dropend">
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sedans
+                                </a>
+                                <ul class="dropdown-menu bg-black">
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("C_class","Mercedes")">C-Class</a></li>
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("E_class","Mercedes")">E-Class</a></li>
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("S_class","Mercedes")">S-Class</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropend bg-black">
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    SUVs
+                                </a>
+                                <ul class="dropdown-menu bg-black">
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("GLC_suv","Mercedes")">GLC</a></li>
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("GLE_suv","Mercedes")">GLE</a></li>
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("GLS_suv","Mercedes")">GLS</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropend bg-black">
+                                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Coupés
+                                </a>
+                                <ul class="dropdown-menu bg-black">
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("CLA_coupe","Mercedes")">CLA</a></li>
+                                    <li><a class="dropdown-item text-light" href="@Url.Action("GT4Door_coupe","Mercedes")">GT 4-Door</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" aria-current="page" href="@Url.Action("Parts","Home")">Accessories</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" aria-current="page" href="@Url.Action("BookTestDrive","Home")">Book a test drive</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" aria-current="page" href="@Url.Action("Careers","Home")">Careers</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" aria-current="page" href="@Url.Action("Contact","Home")">Contact us</a>
+                    </li>
+
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                           @(Session["isAdmin"] == null ? "hidden" : ((bool)Session["isAdmin"] ? "" : "hidden"))>
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu bg-black">
+                            <li><a class="dropdown-item text-light" href="@Url.Action("AdminModels","Admin")">Models</a></li>
+                            <li><a class="dropdown-item text-light" href="@Url.Action("AdminParts","Admin")">Parts</a></li>
+                            <li><a class="dropdown-item text-light" href="@Url.Action("AdminCareers","Admin")">Careers</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" aria-current="page" href="@Url.Action("LoginSignup","Home")">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+<footer>
+    <div class="row">
+        <div class="col">
+            <h3>Authorized Dealers<div class="underline"><span></span></div></h3>
+            <p>Abo Ghaly Motors</p>
+            <p>Ezz El Arab Stars</p>
+            <p>German Auto Service</p>
+        </div>
+        <div class="col">
+            <h3>Mercedes Company <div class="underline"><span></span></div></h3>
+            <p>Cookies</p>
+            <p>Privacy</p>
+            <p>Data protection</p>
+            <p>Legal Notices</p>
+        </div>
+        <div class="col">
+            <h3>Find us on social media <div class="underline"><span></span></div></h3>
+            <div class="socialmedia">
+                <a href="https://www.facebook.com/MercedesBenz/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/mercedesbenz" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/mercedesbenz/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/miamimercedes/mercedes-benz/" target="_blank"><i class="fab fa-pinterest"></i></a>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <p class="copyrights">©️ 2023 Mercedes-Benz AG. All rights reserved (publication details).</p>
+</footer>
+</html>

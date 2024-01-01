@@ -1,0 +1,86 @@
+﻿@model IEnumerable<IP_Project.Models.Accessory>
+@{ViewBag.Title = "Admin Parts";}
+
+<html>
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <table class="table table-hover mt-3 caption-top table-bordered border-dark">
+        <caption class="parts-table-admin">Car Parts</caption>
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Car</th>
+                <th scope="col">Type</th>
+                <th scope="col">Price</th>
+                <th scope="col">Availability</th>
+                <th scope="col">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var acc in Model)
+            {
+                <tr>
+                    <th scope="row">@acc.Name</th>
+                    <td>@(acc.Car != null ? (acc.Car.Model + " - " + acc.Car.Year) : "General")</td>
+                    <td>@acc.Type</td>
+                    <td>@acc.Price $</td>
+                    <td>@(acc.Availability ? "Available" : "Not Available")</td>
+                    <td style="text-align: center;">
+                        <img src="data:image;base64,@System.Convert.ToBase64String(acc.Image)" width="100px">
+                    </td>
+                </tr>
+            }
+    </table>
+
+
+    @using (Html.BeginForm("Insert_Part", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="admin-form">
+            <h2>Insert New Part</h2>
+        </div>
+
+        <div class="container ms-1 bg-light border border-light-subtle">
+            <div class="mb-3 me-auto">
+                <label class="form-label">Name:</label>
+                <input class="form-control" type="text" name="name" required>
+            </div>
+            <div class="mb-3 me-auto">
+                <label class="form-label">Chassis:</label>
+                <input class="form-control" type="number" name="chassis">
+            </div>
+
+            <div class="mb-3 me-auto">
+                <label class="form-label">Type:</label>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="accType" id="radioAcc" value="Acc" required>
+                    <label class="form-check-label" for="radioAcc">Accessory</label>
+                </div><br />
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="accType" id="radioPart" value="Part">
+                    <label class="form-check-label" for="radioPart">Part</label>
+                </div><br />
+            </div>
+
+            <div class="mb-3 me-auto">
+                <label class="form-label">Price:</label>
+                <input class="form-control" type="number" name="price" required>
+            </div>
+            <div class="mb-3 me-auto">
+                <input class="form-check-input" type="checkbox" name="availability" id="availability">
+                <label class="form-check-label" for="availability">Availabile</label>
+            </div>
+            <div class="mb-3 me-auto">
+                <label class="form-label">Image:</label>
+                <input class="form-control" type="file" accept=".jpg, .jpeg" name="imageFile" required>
+            </div>
+            <button type="submit" class="btn btn-secondary me-auto">Insert</button>
+        </div>
+    }
+    </body>
+
+</html>

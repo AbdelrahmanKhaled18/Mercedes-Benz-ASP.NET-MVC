@@ -1,0 +1,87 @@
+﻿@model IP_Project.Models.TestDriveFormModel
+@{ViewBag.Title = "Test Drive";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="test-img">
+            <img src="~/Images/testdrive.jpeg" width="100%">
+        </div>
+        <div class="test-drive-start">
+            <p>
+                Dear Mercedes Benz enthusiast,
+                thank you for your interest in booking a test drive.
+                You are one step closer to experiencing the drive of your dreams.<br>
+                Please fill the below form and a Mercedes Centre representative will contact you within 24 hrs.<br>
+            </p>
+        </div>
+
+        @using (Html.BeginForm("Insert_Drive", "Home", FormMethod.Post))
+        {
+            <div class="booking-test-details">
+                <h2>Booking Details:</h2>
+
+                <div class="mb-3 me-auto">
+                    <label class="form-label">Location</label>
+                    <select name="location" required>
+                        @foreach (var loc in Model.Locations)
+                        {
+                            <option value="@loc.ID">@loc.City</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3 me-auto">
+                    <label class="form-label">Car</label>
+                    <select name="car" required>
+                        @foreach (var car in Model.Cars)
+                        {
+                            <option value="@car.Chassis">@car.Model - @car.Year</option>
+                        }
+                    </select>
+                </div>
+
+                <label for="date" class="label-car-date">Select Date:</label><br>
+                <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" value=""
+                       min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd")" required>
+
+                <div class="mb-3 me-auto">
+                    <label class="form-label">Time:</label>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="time" id="timeEarly" value="09:00" required>
+                        <label class="form-check-label" for="timeEarly">9AM - 3PM</label>
+                    </div><br />
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="time" id="timeLate" value="15:00">
+                        <label class="form-check-label" for="timeLate">3PM - 9PM</label>
+                    </div><br />
+                </div>
+
+                <button type="submit" class="btn btn-secondary me-auto">Book</button>
+            </div>
+        }
+
+        <div class="test-drive-end">
+            <p>
+                <strong>Data Protection Notice:</strong> <br>
+                Mercedes Benz Group or its agents may use the information you provide together with other information we have about you to contact you,<br>
+                including by mail, phone, SMS, fax or e-mail, with offers or information about Mercedes products and services we can provide.<br>
+                We may keep your information for a reasonable period to contact you with offers, invitations or information about our products and services.
+            </p>
+        </div>
+    </main>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+</body>

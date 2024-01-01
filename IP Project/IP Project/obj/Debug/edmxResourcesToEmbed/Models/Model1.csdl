@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MercedesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accessory">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Car_Chassis" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Availability" Type="Boolean" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Car" Relationship="Self.FK_Accessories_Cars" FromRole="Accessories" ToRole="Cars" />
+  </EntityType>
+  <EntityType Name="Career">
+    <Key>
+      <PropertyRef Name="Job_ID" />
+    </Key>
+    <Property Name="Job_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Availability" Type="Boolean" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Job_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Careers_Loactions" FromRole="Careers" ToRole="Locations" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="Chassis" />
+    </Key>
+    <Property Name="Chassis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Horse_Power" Type="Int32" Nullable="false" />
+    <Property Name="Engine_Capacity" Type="Int32" Nullable="false" />
+    <Property Name="Acceleration" Type="Double" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="Accessories" Relationship="Self.FK_Accessories_Cars" FromRole="Cars" ToRole="Accessories" />
+    <NavigationProperty Name="Test_Drive" Relationship="Self.FK_Test_Drive_Cars" FromRole="Cars" ToRole="Test_Drive" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telephone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Time_Open" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Time_Closed" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Careers" Relationship="Self.FK_Careers_Loactions" FromRole="Locations" ToRole="Careers" />
+    <NavigationProperty Name="Test_Drive" Relationship="Self.FK_Test_Drive_Locations" FromRole="Locations" ToRole="Test_Drive" />
+  </EntityType>
+  <EntityType Name="Test_Drive">
+    <Key>
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Car_Chassis" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Car_Chassis" Type="Int32" Nullable="false" />
+    <Property Name="Location_ID" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Car" Relationship="Self.FK_Test_Drive_Cars" FromRole="Test_Drive" ToRole="Cars" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_Test_Drive_Locations" FromRole="Test_Drive" ToRole="Locations" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Test_Drive_Users" FromRole="Test_Drive" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Admin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Test_Drive" Relationship="Self.FK_Test_Drive_Users" FromRole="Users" ToRole="Test_Drive" />
+  </EntityType>
+  <Association Name="FK_Accessories_Cars">
+    <End Role="Cars" Type="Self.Car" Multiplicity="0..1" />
+    <End Role="Accessories" Type="Self.Accessory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="Chassis" />
+      </Principal>
+      <Dependent Role="Accessories">
+        <PropertyRef Name="Car_Chassis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Careers_Loactions">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
+    <End Role="Careers" Type="Self.Career" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Careers">
+        <PropertyRef Name="Location_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Drive_Cars">
+    <End Role="Cars" Type="Self.Car" Multiplicity="1" />
+    <End Role="Test_Drive" Type="Self.Test_Drive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="Chassis" />
+      </Principal>
+      <Dependent Role="Test_Drive">
+        <PropertyRef Name="Car_Chassis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Drive_Locations">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
+    <End Role="Test_Drive" Type="Self.Test_Drive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Test_Drive">
+        <PropertyRef Name="Location_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Drive_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Test_Drive" Type="Self.Test_Drive" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Test_Drive">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MercedesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accessories" EntityType="Self.Accessory" />
+    <EntitySet Name="Careers" EntityType="Self.Career" />
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="Test_Drive" EntityType="Self.Test_Drive" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Accessories_Cars" Association="Self.FK_Accessories_Cars">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="Accessories" EntitySet="Accessories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Careers_Loactions" Association="Self.FK_Careers_Loactions">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Careers" EntitySet="Careers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Drive_Cars" Association="Self.FK_Test_Drive_Cars">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="Test_Drive" EntitySet="Test_Drive" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Drive_Locations" Association="Self.FK_Test_Drive_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Test_Drive" EntitySet="Test_Drive" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Drive_Users" Association="Self.FK_Test_Drive_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Test_Drive" EntitySet="Test_Drive" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

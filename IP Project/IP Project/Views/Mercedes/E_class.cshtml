@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "E Class";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card">
+        <img src="~/Images/eclass2.jpg">
+        <div class="banner-text-e">
+            <h4>E-Class Saloon</h4>
+            <p>The E-Class offers everything you need:<br> space, comfort, safety and innovations. </p>
+        </div>
+    </div>
+
+    <div class="interior-e">
+        <h2>The interior of the Mercedes-Benz E-Class Saloon.</h2>
+        <p>High-quality materials, innovative technology and even more comfort: the interior of the E-Class Saloon brings together everything that makes your everyday life better. The centrepiece is the digital cockpit: the vehicle can be operated as intuitively as a smartphone via the high-resolution media display.</p>
+        <img src="~/Images/eclassinterior.jpg">
+    </div>
+
+    <div class="e-cards">
+        <h2>E-Class Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>

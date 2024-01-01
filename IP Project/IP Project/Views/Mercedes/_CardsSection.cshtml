@@ -1,0 +1,22 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+    @foreach (var car in Model)
+    {
+        <div class="col-md-4">
+            <div class="card h-100">
+                <img src="data:image;base64,@System.Convert.ToBase64String(@car.Image)" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@car.Model</h5>
+                    <h6 class="c-card-specs">
+                        Horse Power: @car.Horse_Power hp <br>
+                        Engine Capacity: @car.Engine_Capacity cm<sup>3</sup> <br>
+                        Acceleration: @car.Acceleration s <br>
+                        Year: @car.Year <br>
+                        Price: @car.Price $ <br>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    }
+</div>

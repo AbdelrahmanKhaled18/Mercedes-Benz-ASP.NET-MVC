@@ -1,0 +1,107 @@
+﻿@model IP_Project.Models.User
+@{
+    ViewBag.Title = "Login and Sign Up";
+    Layout = null;
+}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-login">
+        <div class="forms-container">
+            <div class="signin-signup">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "sign-in-form" }))
+                {
+
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        @Html.TextBoxFor(model => model.Email, new { placeholder = "Email", @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        @Html.PasswordFor(model => model.Password, new { placeholder = "Password", @class = "form-control", required = "required", minlength = 6, maxlength = 12 })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" />
+
+                    if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="text-danger" style="font-weight: bold; color: red;">
+                            <p>Invalid username or password</p>
+                        </div>
+                    }
+                }
+
+
+                @using (Html.BeginForm("Signup", "Home", FormMethod.Post, new { @class = "sign-up-form" }))
+                {
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        @Html.TextBoxFor(model => model.Username, new { placeholder = "Username", @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Username)
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        @Html.TextBoxFor(model => model.Email, new { type = "email", placeholder = "Email", @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        @Html.PasswordFor(model => model.Password, new { placeholder = "Password", @class = "form-control", required = "required", minlength = "6", maxlength = "12" })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                    <input type="submit" class="btn" value="Sign up" />
+                }
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here ?</h3>
+                    <p>
+                        You can join Mercedes Benz community now by creating a new account!
+                    </p>
+                    <button class="btn transparent" id="sign-up-btn">
+                        Sign up
+                    </button>
+                </div>
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Already one of our community?</h3>
+                    <p>
+                        Quickly access your account!
+                    </p>
+                    <button class="btn transparent" id="sign-in-btn">
+                        Sign in
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container-login");
+
+        sign_up_btn.addEventListener("click", () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener("click", () => {
+            container.classList.remove("sign-up-mode");
+        });
+
+        function changeImage_1() {
+            var carImage = document.getElementById('carImage');
+            carImage.src = 'Pics/';
+        }
+    </script>
+</body>

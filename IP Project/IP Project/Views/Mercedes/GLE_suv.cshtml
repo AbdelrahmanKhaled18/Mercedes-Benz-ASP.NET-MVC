@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "GLE SUV";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card-gle">
+        <img src="~/Images/glemain.jpeg">
+        <div class="banner-text-gle">
+            <h4>GLE SUV</h4>
+            <p>The unique design and equipment lines lend the vehicle its very own character - from extensive standard equipment to the AMG Line.</p>
+        </div>
+    </div>
+
+    <div class="interior-gle">
+        <h2>The interior of the Mercedes-Benz GLC-SUV</h2>
+        <p>The interior of the GLE SUV already offers extensive highlights as standard, such as a digital widescreen cockpit and a multifunction sports steering wheel. The optional Style, Progressive or AMG Line equipment lines are available for individualising the seats, upholstery and other features.</p>
+        <img src="~/Images/gleint.jpg">
+    </div>
+
+    <div class="gle-cards">
+        <h2>GLE-SUV Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "GLS SUV";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card-gls">
+        <img src="~/Images/gls.jpg">
+        <div class="banner-text-gls">
+            <h4>GLS SUV</h4>
+            <p>
+                The GLS proudly carries the S in its name. Like no other car in the world, it combines the effortless agility of an SUV with the inner qualities of an S-Class.<br> Climb aboard and experience sublime luxury, tangible comfort and exemplary safety at an outstanding level.
+            </p>
+        </div>
+    </div>
+
+    <div class="interior-gls">
+        <h2>The interior of the Mercedes-Benz GLS-SUV</h2>
+        <p>The interior of the GLS already offers extensive highlights as standard, such as the MBUX multimedia system and a multifunction sports steering wheel. The optional EXCLUSIVE Line or AMG Line equipment lines are available for customising the seats, upholstery and other features.</p>
+        <img src="~/Images/glsint.jpg">
+    </div>
+
+    <div class="gls-cards">
+        <h2>GLS-SUV Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>

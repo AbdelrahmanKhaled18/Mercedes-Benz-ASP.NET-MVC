@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "GLC SUV";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card-glc">
+        <img src="~/Images/glc.jpeg">
+        <div class="banner-text-glc">
+            <h4>GLC SUV</h4>
+            <p>Attractive. On every route.</p>
+        </div>
+    </div>
+
+    <div class="interior-glc">
+        <h2>The interior of the Mercedes-Benz GLC-SUV</h2>
+        <p>The interior of the new GLC SUV sets standards. Be it the central display tilted towards the driver, the multifunction sports steering wheel or high-quality trim elements: high-quality materials ensure luxurious comfort that you can feel - on every journey.</p>
+        <img src="~/Images/glcint.jpeg">
+    </div>
+
+    <div class="glc-cards">
+        <h2>GLC-SUV Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>

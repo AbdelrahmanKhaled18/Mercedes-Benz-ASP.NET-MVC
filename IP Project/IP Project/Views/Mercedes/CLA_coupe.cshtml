@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "CLA Coupe";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card-cla">
+        <img src="~/Images/cla-main.jpg">
+        <div class="banner-text-cla">
+            <h4>CLA Saloon</h4>
+            <p>Find out more about the CLA Coupé with three different equipment lines -<br> from standard equipment to the AMG Line.</p>
+        </div>
+    </div>
+
+    <div class="interior-cla">
+        <h2>The interior of the Mercedes-Benz CLA Saloon.</h2>
+        <p>You can fit out the CLA Coupé just the way you like it. Discover the interior highlights now and find out more about the Mercedes-Benz CLA Coupé interior.</p>
+        <img src="~/Images/claint.jpeg">
+    </div>
+
+    <div class="cla-cards">
+        <h2>CLA Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>

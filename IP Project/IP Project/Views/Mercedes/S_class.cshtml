@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IP_Project.Models.Car>
+@{ViewBag.Title = "S Class";}
+
+<head>
+    <link href="@Url.Content("/Content/StyleSheet4.css")" rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner-card-s">
+        <img src="~/Images/mercedes-benz-s-class-wv223-stage-3840x1707-09-2022.jpeg">
+        <div class="banner-text-s">
+            <h4>S-Class Saloon</h4>
+            <p>
+                Modern luxury and first-class comfort reach a
+                new level in the S-Class.<br> It is the ideal haven for anyone for whom driving a car
+                will always be about much more than simply transport.
+                Innovative comfort-oriented features create a superior travelling experience
+                from the driver's seat to the rear.
+            </p>
+        </div>
+    </div>
+
+    <div class="interior-s">
+        <h2>The interior of the Mercedes-Benz S-Class Saloon.</h2>
+        <p>
+            The S-Class Saloon combines a broad selection of elegant materials with fine surfaces. Innovative technology and high-resolution screens
+            lend it a progressive character.Furthermore, high-tech and infotainment are presented with a user-friendly architecture.
+        </p>
+        <img src="~/Images/sclassint.jpg">
+    </div>
+
+    <div class="s-cards">
+        <h2>S-Class Models</h2>
+        @Html.Partial("_CardsSection")
+    </div>
+</body>
